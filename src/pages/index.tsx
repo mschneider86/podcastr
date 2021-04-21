@@ -1,6 +1,16 @@
-import { Header } from '../components/Header';
+import { GetStaticProps } from 'next';
 
-export default function Home(props) {
+type Episode = {
+  id: string;
+  title: string;
+  members: string;
+};
+
+type HomeProps = {
+  episodes: Episode[];
+};
+
+export default function Home(props: HomeProps) {
   return (
     <div>
       <h1>Index</h1>;<p>{JSON.stringify(props.episodes)}</p>
@@ -8,7 +18,7 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch('http://localhost:3333/episodes');
   const data = await response.json();
 
@@ -18,4 +28,4 @@ export async function getStaticProps() {
     },
     revalidate: 60 * 60 * 8, // 8 hours
   };
-}
+};
