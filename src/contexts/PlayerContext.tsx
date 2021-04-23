@@ -66,7 +66,7 @@ export function PlayerContextProvider({
   }
 
   function setPlayingState(state: boolean) {
-    setIsPlaying(false);
+    setIsPlaying(state);
   }
 
   const hasPrevious = currentEpisodeIndex > 0;
