@@ -1,6 +1,7 @@
 import { parseISO, format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { api } from '../services/api';
@@ -32,6 +33,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   return (
     <div className={styles.homepage}>
+      <Head>
+        <title>Home | Podcastr</title>
+      </Head>
+
       <section className={styles.latestEpisodes}>
         <h2>Últimos Episódios</h2>
 
